@@ -21,7 +21,6 @@ target/
 
 ### NetBeans ###
 # Ignorar el archivo pom.xml
-pom.xml
 persistence.xml
 /META-INF/
 /Project Files
