@@ -61,6 +61,7 @@ com\kejhoma\appindigenas\igu\LoginInicial$2.class
 com\kejhoma\appindigenas\igu\BdUsuarios$7.class
 com\kejhoma\appindigenas\perisntencia\exceptions\NonexistentEntityException.class
 com\kejhoma\appindigenas\logica\Controladora.class
+com\kejhoma\appindigenas\igu\BdIndigenas$20.class
 com\kejhoma\appindigenas\igu\CrearUsu$4.class
 com\kejhoma\appindigenas\igu\PantallaUsuarios$2.class
 com\kejhoma\appindigenas\igu\BdIndigenas$15.class

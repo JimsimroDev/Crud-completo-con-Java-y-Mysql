@@ -48,7 +48,7 @@ public class LoginInicial extends javax.swing.JFrame {
         btnIngresar = new javax.swing.JButton();
         txtContrasenia = new LIB.JTexfieldPH_Password();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jEImagePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/sombrero.png"))); // NOI18N
         jEImagePanel1.setName(""); // NOI18N
@@ -85,7 +85,6 @@ public class LoginInicial extends javax.swing.JFrame {
         txtUsuario.setToolTipText("");
         txtUsuario.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         txtUsuario.setName(""); // NOI18N
-        txtUsuario.setOpaque(false);
         txtUsuario.setPhColor(new java.awt.Color(255, 255, 255));
         txtUsuario.setPlaceholder("       Usuario");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -187,7 +186,6 @@ public class LoginInicial extends javax.swing.JFrame {
         txtContrasenia.setForeground(new java.awt.Color(255, 255, 255));
         txtContrasenia.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtContrasenia.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
-        txtContrasenia.setOpaque(false);
         txtContrasenia.setPhColor(new java.awt.Color(204, 255, 204));
         txtContrasenia.setPlaceholder("     Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -220,6 +218,7 @@ public class LoginInicial extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
@@ -230,14 +229,14 @@ public class LoginInicial extends javax.swing.JFrame {
         if (usr != null) {
             String rol = usr.getUnRol().getNombreRol();
 
-            if (rol.equals("administrador")) {
+            if ("administrador".equals(rol)) {
                 JOptionPane.showMessageDialog(null, "Bienvenido!....");
                 BdIndigenas panta = new BdIndigenas(control, usr);
                 panta.setVisible(true);
                 panta.setLocationRelativeTo(null);
                 this.dispose();
             }
-            if (rol.equals("usuario")) {
+            if ("usuario".equals(rol)) {
                 JOptionPane.showMessageDialog(null, "Bienvenido!....");
                 PantallaUsuarios pUser = new PantallaUsuarios(control, usr);
                 pUser.setVisible(true);

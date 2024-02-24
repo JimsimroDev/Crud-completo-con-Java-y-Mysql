@@ -57,10 +57,8 @@ public class PantallaUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jEImagePanel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\jhoan\\OneDrive\\Escritorio\\indigenas.png")); // NOI18N
-
         tablaIndigenas.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
-        tablaIndigenas.setForeground(new java.awt.Color(255, 255, 255));
+        tablaIndigenas.setForeground(new java.awt.Color(0, 0, 0));
         tablaIndigenas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -74,7 +72,7 @@ public class PantallaUsuarios extends javax.swing.JFrame {
         ));
         tablaIndigenas.setGridColor(new java.awt.Color(0, 0, 0));
         tablaIndigenas.setSelectionBackground(new java.awt.Color(153, 255, 255));
-        tablaIndigenas.setSelectionForeground(new java.awt.Color(102, 102, 102));
+        tablaIndigenas.setSelectionForeground(new java.awt.Color(0, 153, 153));
         jScrollPane1.setViewportView(tablaIndigenas);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
@@ -86,19 +84,15 @@ public class PantallaUsuarios extends javax.swing.JFrame {
         txtUser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtUser.setForeground(new java.awt.Color(0, 0, 0));
         txtUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtUser.setText("jTextField1");
         txtUser.setBorder(null);
-        txtUser.setOpaque(false);
 
         btnCerrarSesion.setBackground(new java.awt.Color(255, 204, 255));
         btnCerrarSesion.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         btnCerrarSesion.setForeground(new java.awt.Color(0, 204, 204));
-        btnCerrarSesion.setIcon(new javax.swing.ImageIcon("C:\\Users\\jhoan\\OneDrive\\Escritorio\\exitB.png")); // NOI18N
         btnCerrarSesion.setText("cerrar sesión");
         btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnCerrarSesion.setIconTextGap(20);
-        btnCerrarSesion.setRolloverIcon(new javax.swing.ImageIcon("C:\\Users\\jhoan\\OneDrive\\Escritorio\\exit.png")); // NOI18N
         btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCerrarSesionMouseEntered(evt);
@@ -119,9 +113,9 @@ public class PantallaUsuarios extends javax.swing.JFrame {
             jEImagePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jEImagePanel1Layout.createSequentialGroup()
                 .addGap(362, 362, 362)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(126, 126, 126)
-                .addComponent(txtUser))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jEImagePanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1)

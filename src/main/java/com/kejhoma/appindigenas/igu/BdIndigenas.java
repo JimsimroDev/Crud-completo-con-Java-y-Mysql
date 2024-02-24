@@ -7,14 +7,18 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Calendar;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class BdIndigenas extends javax.swing.JFrame {
-    
+
     int xMouse, yMouse;
 
     Controladora control;
@@ -34,8 +38,6 @@ public class BdIndigenas extends javax.swing.JFrame {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("img/sombreroIni.png"));
         return retValue;
     }
-    JFrame frame = new JFrame();
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -43,23 +45,20 @@ public class BdIndigenas extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-        contendorPrinc = new LIB.JPanelRound();
-        jPanel2 = new javax.swing.JPanel();
-        btnUsuarios = new javax.swing.JButton();
-        btnCerrarSesion = new javax.swing.JButton();
-        btnInicio = new javax.swing.JButton();
         contenedor = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaIndigenas = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
+        txtIP1 = new javax.swing.JTextField();
         txtUser = new javax.swing.JTextField();
-        btnMaximizar = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        btnMinimizar = new javax.swing.JButton();
+        btnOscuro = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btnUsuarios = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -67,7 +66,7 @@ public class BdIndigenas extends javax.swing.JFrame {
 
         jMenu2.setText("jMenu2");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("APP Indigenas");
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -76,128 +75,13 @@ public class BdIndigenas extends javax.swing.JFrame {
             }
         });
 
-        contendorPrinc.setForeground(new java.awt.Color(255, 255, 255));
-        contendorPrinc.setColorPrimario(new java.awt.Color(255, 139, 151));
-        contendorPrinc.setColorSecundario(new java.awt.Color(127, 229, 229));
-        contendorPrinc.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        contendorPrinc.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                contendorPrincMouseDragged(evt);
-            }
-        });
-        contendorPrinc.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                contendorPrincMousePressed(evt);
-            }
-        });
-
-        jPanel2.setBackground(new java.awt.Color(86, 174, 244,50));
-        jPanel2.setOpaque(false);
-
-        btnUsuarios.setBackground(new java.awt.Color(86, 174, 244,50));
-        btnUsuarios.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        btnUsuarios.setForeground(new java.awt.Color(0, 0, 0));
-        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usersBorroso.png"))); // NOI18N
-        btnUsuarios.setText("Usuarios");
-        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnUsuarios.setIconTextGap(20);
-        btnUsuarios.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/users.png"))); // NOI18N
-        btnUsuarios.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnUsuariosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnUsuariosMouseExited(evt);
-            }
-        });
-        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUsuariosActionPerformed(evt);
-            }
-        });
-
-        btnCerrarSesion.setBackground(new java.awt.Color(86, 174, 244,50));
-        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
-        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exitB.png"))); // NOI18N
-        btnCerrarSesion.setText("cerrar sesión");
-        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCerrarSesion.setIconTextGap(20);
-        btnCerrarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
-        btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCerrarSesionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCerrarSesionMouseExited(evt);
-            }
-        });
-        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSesionActionPerformed(evt);
-            }
-        });
-
-        btnInicio.setBackground(new java.awt.Color(86, 174, 244,50));
-        btnInicio.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        btnInicio.setForeground(new java.awt.Color(0, 0, 0));
-        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/homBorro.png"))); // NOI18N
-        btnInicio.setText("Inicio");
-        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        btnInicio.setIconTextGap(20);
-        btnInicio.setOpaque(false);
-        btnInicio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
-        btnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnInicioMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnInicioMouseExited(evt);
-            }
-        });
-        btnInicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInicioActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155)
-                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        contenedor.setBackground(new java.awt.Color(0, 0, 0));
+        contenedor.setBackground(new java.awt.Color(153, 255, 153));
         contenedor.setMinimumSize(new java.awt.Dimension(870, 580));
         contenedor.setOpaque(false);
         contenedor.setPreferredSize(new java.awt.Dimension(870, 580));
         contenedor.setRequestFocusEnabled(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("BIENVENIDO A LA BASE DE DATOS INDIGENAS");
-
-        tablaIndigenas.setBackground(new Color(0,0,0,0));
-        tablaIndigenas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tablaIndigenas.setBackground(new java.awt.Color(166, 164, 158));
         tablaIndigenas.setFont(new java.awt.Font("Segoe UI Symbol", 0, 14)); // NOI18N
         tablaIndigenas.setForeground(new java.awt.Color(255, 255, 255));
         tablaIndigenas.setModel(new javax.swing.table.DefaultTableModel(
@@ -291,166 +175,219 @@ public class BdIndigenas extends javax.swing.JFrame {
             }
         });
 
+        txtIP1.setEditable(false);
+        txtIP1.setOpaque(true);
+
         txtUser.setEditable(false);
         txtUser.setBackground(new Color(0,0,0,0));
         txtUser.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         txtUser.setForeground(new java.awt.Color(0, 0, 0));
         txtUser.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtUser.setBorder(null);
-        txtUser.setOpaque(false);
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
+
+        btnOscuro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modoDark.png"))); // NOI18N
+        btnOscuro.setBorder(null);
+        btnOscuro.setBorderPainted(false);
+        btnOscuro.setContentAreaFilled(false);
+        btnOscuro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOscuro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOscuro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOscuroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
         contenedor.setLayout(contenedorLayout);
         contenedorLayout.setHorizontalGroup(
             contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
-                .addGap(192, 192, 192))
-            .addGroup(contenedorLayout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addGap(72, 72, 72))
-            .addGroup(contenedorLayout.createSequentialGroup()
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(54, 54, 54)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(71, 71, 71))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLayout.createSequentialGroup()
-                .addGap(768, 768, 768)
-                .addComponent(txtUser)
+                .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenedorLayout.createSequentialGroup()
+                        .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(contenedorLayout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(txtIP1, javax.swing.GroupLayout.PREFERRED_SIZE, 487, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(contenedorLayout.createSequentialGroup()
+                                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(120, 120, 120)
+                                .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68)
+                                .addComponent(btnOscuro, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(120, 120, 120)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 4, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         contenedorLayout.setVerticalGroup(
             contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedorLayout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(8, 8, 8)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
-                .addGap(10, 10, 10)
+                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1)
+                .addGap(16, 16, 16)
                 .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17)
-                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(contenedorLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(btnOscuro))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtIP1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        btnMaximizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/maximize (1).png"))); // NOI18N
-        btnMaximizar.setBorder(null);
-        btnMaximizar.setContentAreaFilled(false);
-        btnMaximizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMaximizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMaximizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/maximize.png"))); // NOI18N
-        btnMaximizar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnMaximizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMaximizar.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setBackground(new java.awt.Color(225, 223, 211));
+        jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
+
+        btnUsuarios.setBackground(new java.awt.Color(225, 223, 211));
+        btnUsuarios.setFont(new java.awt.Font("Segoe UI Symbol", 1, 18)); // NOI18N
+        btnUsuarios.setForeground(new java.awt.Color(0, 0, 0));
+        btnUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usersBorroso.png"))); // NOI18N
+        btnUsuarios.setText("Usuarios                           >");
+        btnUsuarios.setBorder(null);
+        btnUsuarios.setBorderPainted(false);
+        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnUsuarios.setIconTextGap(20);
+        btnUsuarios.setPreferredSize(new java.awt.Dimension(96, 32));
+        btnUsuarios.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/users.png"))); // NOI18N
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMaximizarActionPerformed(evt);
+                btnUsuariosActionPerformed(evt);
             }
         });
 
-        btnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
-        btnCerrar.setBorder(null);
-        btnCerrar.setContentAreaFilled(false);
-        btnCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar1.png"))); // NOI18N
-        btnCerrar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnCerrar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
+        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exitB.png"))); // NOI18N
+        btnCerrarSesion.setText("cerrar sesión");
+        btnCerrarSesion.setBorder(null);
+        btnCerrarSesion.setBorderPainted(false);
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrarSesion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCerrarSesion.setIconTextGap(20);
+        btnCerrarSesion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/exit.png"))); // NOI18N
+        btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCerrarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCerrarSesionMouseExited(evt);
+            }
+        });
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
+                btnCerrarSesionActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("APP Indigenas");
-
-        btnMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/maximize (1).png"))); // NOI18N
-        btnMinimizar.setBorder(null);
-        btnMinimizar.setContentAreaFilled(false);
-        btnMinimizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMinimizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMinimizar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/maximize.png"))); // NOI18N
-        btnMinimizar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btnMinimizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
+        btnInicio.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
+        btnInicio.setForeground(new java.awt.Color(0, 0, 0));
+        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/homBorro.png"))); // NOI18N
+        btnInicio.setText("Inicio");
+        btnInicio.setBorder(null);
+        btnInicio.setBorderPainted(false);
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInicio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        btnInicio.setIconTextGap(40);
+        btnInicio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/img/home.png"))); // NOI18N
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMinimizarActionPerformed(evt);
+                btnInicioActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout contendorPrincLayout = new javax.swing.GroupLayout(contendorPrinc);
-        contendorPrinc.setLayout(contendorPrincLayout);
-        contendorPrincLayout.setHorizontalGroup(
-            contendorPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contendorPrincLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCerrar)
-                .addGap(14, 14, 14)
-                .addComponent(btnMaximizar)
-                .addGap(12, 12, 12)
-                .addComponent(btnMinimizar)
-                .addGap(982, 982, 982)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-            .addGroup(contendorPrincLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 923, Short.MAX_VALUE))
+        btnExit.setBackground(new java.awt.Color(166, 164, 158));
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8_Multiply_32px.png"))); // NOI18N
+        btnExit.setBorder(null);
+        btnExit.setBorderPainted(false);
+        btnExit.setFocusPainted(false);
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExitMouseExited(evt);
+            }
+        });
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+            .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnExit)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        contendorPrincLayout.setVerticalGroup(
-            contendorPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contendorPrincLayout.createSequentialGroup()
-                .addGroup(contendorPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contendorPrincLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addComponent(btnCerrar)
-                    .addComponent(btnMaximizar)
-                    .addComponent(btnMinimizar))
-                .addGap(5, 5, 5)
-                .addGroup(contendorPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contendorPrincLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contendorPrincLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(114, 114, 114))))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnExit)
+                .addGap(21, 21, 21)
+                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102)
+                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contendorPrinc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 887, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contendorPrinc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.txtUser.setText(usr.getNombreUsu());
+        Calendar cal = Calendar.getInstance();
+        this.txtUser.setText(usr.getNombreUsu() + " | Fecha: " + cal.getTime() +  "|");
+        InetAddress inetAddress;
+        try {
+            inetAddress = InetAddress.getLocalHost();
+        this.txtIP1.setText(" IP de la maquina " + inetAddress.getHostAddress());
+        } catch (UnknownHostException ex) {
+            Logger.getLogger(BdIndigenas.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
 
     private void btnEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseExited
         btnEditar.setForeground(new java.awt.Color(0, 0, 0));
-        btnEditar.setBackground(new Color(86, 174, 244,50));
     }//GEN-LAST:event_btnEditarMouseExited
 
     private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
-        btnEditar.setForeground(new java.awt.Color(250, 250, 250));
-        btnEditar.setBackground(new Color(86, 174, 244));
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_btnEditarMouseEntered
 
     private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
@@ -460,17 +397,6 @@ public class BdIndigenas extends javax.swing.JFrame {
         this.dispose();
 
     }//GEN-LAST:event_btnInicioActionPerformed
-
-    private void btnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseExited
-        btnInicio.setForeground(new java.awt.Color(0, 0, 0));
-        btnInicio.setBackground(new java.awt.Color(86, 174, 244,50));
-    }//GEN-LAST:event_btnInicioMouseExited
-
-    private void btnInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseEntered
-        btnInicio.setForeground(new java.awt.Color(250, 250, 250));
-        btnInicio.setBackground(new java.awt.Color(86, 174, 244));
-
-    }//GEN-LAST:event_btnInicioMouseEntered
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         int mensaje = JOptionPane.YES_NO_OPTION;
@@ -487,13 +413,7 @@ public class BdIndigenas extends javax.swing.JFrame {
 
     private void btnCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseExited
         btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
-        btnCerrarSesion.setBackground(new Color(86, 174, 244,50));
     }//GEN-LAST:event_btnCerrarSesionMouseExited
-
-    private void btnCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseEntered
-        btnCerrarSesion.setForeground(new java.awt.Color(250, 250, 250));
-        btnCerrarSesion.setBackground(new Color(86, 174, 244));
-    }//GEN-LAST:event_btnCerrarSesionMouseEntered
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         PantallaAgregar agrgar = new PantallaAgregar(control, usr);
@@ -509,12 +429,10 @@ public class BdIndigenas extends javax.swing.JFrame {
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
         btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
-        btnAgregar.setBackground(new Color(86, 174, 244,50));
     }//GEN-LAST:event_btnAgregarMouseExited
 
     private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-        btnAgregar.setForeground(new java.awt.Color(250, 250, 250));
-        btnAgregar.setBackground(new Color(86, 174, 244));
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
@@ -528,16 +446,6 @@ public class BdIndigenas extends javax.swing.JFrame {
         contenedor.revalidate();
         contenedor.repaint();
     }//GEN-LAST:event_btnUsuariosActionPerformed
-
-    private void btnUsuariosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseExited
-        btnUsuarios.setForeground(new java.awt.Color(0, 0, 0));
-        btnUsuarios.setBackground(new java.awt.Color(86, 174, 244,50));
-    }//GEN-LAST:event_btnUsuariosMouseExited
-
-    private void btnUsuariosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseEntered
-        btnUsuarios.setForeground(new java.awt.Color(250, 250, 250));
-        btnUsuarios.setBackground(new java.awt.Color(86, 174, 244));
-    }//GEN-LAST:event_btnUsuariosMouseEntered
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
 
@@ -570,37 +478,14 @@ public class BdIndigenas extends javax.swing.JFrame {
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
         btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
-        btnEliminar.setBackground(new java.awt.Color(255, 0, 0,50));
 
     }//GEN-LAST:event_btnEliminarMouseExited
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
         btnEliminar.setForeground(new java.awt.Color(250, 250, 250));
-        btnEliminar.setBackground(new java.awt.Color(255, 0, 0));
 
-        
+
     }//GEN-LAST:event_btnEliminarMouseEntered
-
-    private void btnMaximizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaximizarActionPerformed
-        int estadoActual = this.getExtendedState();
-    
-    if ((estadoActual & MAXIMIZED_BOTH) == 0) {
-        this.setExtendedState(MAXIMIZED_BOTH);
-    } else {
-        this.setExtendedState(NORMAL);
-    }
-        
-    }//GEN-LAST:event_btnMaximizarActionPerformed
-
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        int mensaje = JOptionPane.YES_NO_OPTION;
-        int mensa = JOptionPane.showConfirmDialog(null, "Deseas Cerrar la aplicacion?", "SALIR", mensaje);
-
-        if (mensa == 0) {
-
-            System.exit(0);
-        }
-    }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
 
@@ -633,58 +518,68 @@ public class BdIndigenas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
-    private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
-        this.setState(ICONIFIED);
-    }//GEN-LAST:event_btnMinimizarActionPerformed
+    boolean modoOscuro = false;
+    private void btnOscuroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOscuroActionPerformed
+        if (!modoOscuro) {
+           
+            modoDarck(btnOscuro);
+            modoOscuro = true;
+        } else {
+           
+            txtUser.setForeground(Color.white);
+            btnOscuro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modoDark.png")));
+            modoOscuro = false;
+        }
 
-    private void contendorPrincMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contendorPrincMousePressed
-        xMouse = evt.getX();
-        yMouse = evt.getY();
-    }//GEN-LAST:event_contendorPrincMousePressed
+    }//GEN-LAST:event_btnOscuroActionPerformed
 
-    private void contendorPrincMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contendorPrincMouseDragged
-        int Y = evt.getYOnScreen();
-        int X = evt.getXOnScreen();
-        setLocation(X - xMouse, Y - yMouse);
-    }//GEN-LAST:event_contendorPrincMouseDragged
+    private void btnCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarSesionMouseEntered
+
+    }//GEN-LAST:event_btnCerrarSesionMouseEntered
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
+
+    private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
+        btnExit.setBackground(Color.red);
+    }//GEN-LAST:event_btnExitMouseEntered
+
+    private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
+        btnExit.setBackground(new Color(166, 164, 158));
+    }//GEN-LAST:event_btnExitMouseExited
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnMaximizar;
-    private javax.swing.JButton btnMinimizar;
+    private javax.swing.JButton btnOscuro;
     private javax.swing.JButton btnUsuarios;
-    private LIB.JPanelRound contendorPrinc;
     private javax.swing.JPanel contenedor;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTable tablaIndigenas;
+    private javax.swing.JTextField txtIP1;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
-    
-    private void cambiarColorBoton(JButton boton, Color color){
-        boton.setBackground(color);
-    }
-    
-    
+
     private void cargarTabla() {
         DefaultTableModel modeloTabla = new DefaultTableModel() {
-           
-            
+
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
-                
-                
+
             }
 
         };
@@ -694,10 +589,10 @@ public class BdIndigenas extends javax.swing.JFrame {
             "Numero De Documento",
             "Nombre",
             "Apellido",
-            "<html>Fecha De Nacimiento <br> | año | mes | dia | </html> "
+            "<html>Fecha De Nacimiento <br> | año | mes | dia | <br><p></p> </html> "
         };
         modeloTabla.setColumnIdentifiers(titulos);
-        
+
         //Traer de la base de datos la lista de Usuarios
         List<Indigenas> listaIndigenas = control.traerIndigenas();
 
@@ -719,9 +614,10 @@ public class BdIndigenas extends javax.swing.JFrame {
         }
 
         tablaIndigenas.setModel(modeloTabla);
-        
-        
 
     }
 
+    private void modoDarck(JButton btn) {
+        btnOscuro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/modoLike.png")));
+    }
 }

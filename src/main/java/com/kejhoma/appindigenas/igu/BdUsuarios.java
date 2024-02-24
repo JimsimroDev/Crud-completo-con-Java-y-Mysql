@@ -66,7 +66,7 @@ public class BdUsuarios extends javax.swing.JPanel {
         contenedor2.setOpaque(false);
 
         tablaUsuarios.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        tablaUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        tablaUsuarios.setForeground(new java.awt.Color(0, 0, 0));
         tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -78,7 +78,10 @@ public class BdUsuarios extends javax.swing.JPanel {
 
             }
         ));
+        tablaUsuarios.setCellSelectionEnabled(true);
         tablaUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablaUsuarios.setGridColor(new java.awt.Color(0, 0, 0));
+        tablaUsuarios.setOpaque(false);
         tablaUsuarios.setRowHeight(30);
         tablaUsuarios.setSelectionBackground(new java.awt.Color(99, 163, 189));
         tablaUsuarios.setSelectionForeground(new java.awt.Color(51, 51, 51));
@@ -123,19 +126,11 @@ public class BdUsuarios extends javax.swing.JPanel {
             }
         });
 
-        btnCrear.setBackground(new java.awt.Color(86, 174, 244,50));
+        btnCrear.setBackground(new java.awt.Color(166, 164, 158));
         btnCrear.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(0, 0, 0));
         btnCrear.setText("Crear nuevo usuario");
         btnCrear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCrear.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCrearMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCrearMouseExited(evt);
-            }
-        });
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearActionPerformed(evt);
@@ -147,20 +142,22 @@ public class BdUsuarios extends javax.swing.JPanel {
         contenedor2Layout.setHorizontalGroup(
             contenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedor2Layout.createSequentialGroup()
-                .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(145, 145, 145)
-                .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(161, 161, 161)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(contenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(contenedor2Layout.createSequentialGroup()
+                        .addComponent(btnCrear, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                        .addGap(139, 139, 139)
+                        .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                        .addGap(161, 161, 161)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         contenedor2Layout.setVerticalGroup(
             contenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(contenedor2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(contenedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,7 +173,9 @@ public class BdUsuarios extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contenedor2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(contenedor2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -244,16 +243,6 @@ public class BdUsuarios extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "La Tabla esta vacia");
         }
     }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void btnCrearMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseEntered
-        btnCrear.setForeground(new java.awt.Color(250, 250, 250));
-        btnCrear.setBackground(new java.awt.Color(86, 174, 244));
-    }//GEN-LAST:event_btnCrearMouseEntered
-
-    private void btnCrearMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCrearMouseExited
-        btnCrear.setForeground(new java.awt.Color(0, 0, 0));
-        btnCrear.setBackground(new java.awt.Color(86, 174, 244,50));
-    }//GEN-LAST:event_btnCrearMouseExited
 
     private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
         btnEditar.setForeground(new java.awt.Color(250, 250, 250));

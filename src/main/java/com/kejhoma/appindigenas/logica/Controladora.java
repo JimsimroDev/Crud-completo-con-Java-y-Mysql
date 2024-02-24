@@ -17,8 +17,8 @@ public class Controladora {
         User usr = null;
         List<User> listaUsuarios = controlPersis.traerUsuarios();
         for (User usu : listaUsuarios) {
-            if (usu.getNombreUsu().equals(usuario)) {
-                if (usu.getContrasenia().equals(contrasena)) {
+            if (usuario.equals(usu.getNombreUsu())) {
+                if (contrasena.equals(usu.getContrasenia())) {
                     usr = usu;
                     return usr;
                 } else {
